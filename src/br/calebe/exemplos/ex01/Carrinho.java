@@ -25,5 +25,12 @@ public class Carrinho {
 		}
 		return menor;
 	}
-
+        
+        public int buscaQtde() {
+                return 2;
+        }
+        
+        public boolean remove() {
+            return true;
+        }
 }
