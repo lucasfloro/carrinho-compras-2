@@ -6,13 +6,16 @@ import java.util.List;
 public class Carrinho {
 
 	private List<Produto> produtos;
+        private int qtde;
 
 	public Carrinho() {
 		produtos = new ArrayList<>();
+                qtde = 0;
 	}
 
 	public void add(Produto produto) {
 		produtos.add(produto);
+                qtde++;
 	}
 
 	public Produto menorProduto() throws CarrinhoVazioExpected {
@@ -27,10 +30,30 @@ public class Carrinho {
 	}
         
         public int buscaQtde() {
-                return 2;
+                return qtde;
         }
         
-        public boolean remove() {
-            return true;
+        public boolean remove(Produto p) {
+            if (produtos.remove(p)) {
+                qtde--;
+                return true;
+            }
+            return false;
+        }
+        
+        public boolean getProduto(Produto prod) {            
+                for (Produto p : produtos) {
+                    if (p.getNome() == prod.getNome())
+                        return true;
+                }
+                return false;
+        }
+        
+        public double getTotal(){
+             double tot = 0;
+             for (Produto p : produtos) {
+                    tot += p.getPreco();
+                }
+             return tot;
         }
 }

@@ -56,21 +56,29 @@ public class CarrinhoTest {
 		Produto deitel = new Produto("Java: como programar", 150.00);
 		carrinho.add(deitel);
                 assertEquals(2, carrinho.buscaQtde());
-                assertEquals(livro, new Produto("Java em 24 horas", 50.00));
-                assertEquals(deitel, new Produto("Java: como programar", 150.00));            
+                assertTrue(carrinho.getProduto(livro));
+                assertTrue(carrinho.getProduto(deitel));                
         }
         
         @Test
         public void removeProdutoTest() throws CarrinhoVazioExpected {
 		Produto livro = new Produto("Java em 24 horas", 50.00);
 		carrinho.add(livro);
-                assertTrue(carrinho.remove());                
+                assertTrue(carrinho.remove(livro));                
         }
         
+        @Test
+        public void removeProdutoInexistenteTest() throws CarrinhoVazioExpected {
+		Produto livro = new Produto("Java em 24 horas", 50.00);
+                assertFalse(carrinho.remove(livro));                
+        }
+
         @Test
         public void calculaTotalTest() throws CarrinhoVazioExpected {
 		Produto livro = new Produto("Java em 24 horas", 50.00);
 		carrinho.add(livro);
-                
+		Produto deitel = new Produto("Java: como programar", 150.00);
+		carrinho.add(deitel);
+                assertEquals(200.00, carrinho.getTotal(),1e-50);
         }
 }
