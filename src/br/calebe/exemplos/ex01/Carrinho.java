@@ -6,6 +6,7 @@ import java.util.List;
 public class Carrinho {
 
 	private List<Produto> produtos;
+        private Pedido pedido;
         private int qtde;
 
 	public Carrinho() {
@@ -55,5 +56,14 @@ public class Carrinho {
                     tot += p.getPreco();
                 }
              return tot;
+        }
+        
+        public void comprar() throws Exception {
+            pedido = new Pedido(1);
+            for (Produto p : produtos) {
+                pedido.addItem(p, 1);
+            }
+            
+            pedido.setValorTotal(getTotal());
         }
 }
