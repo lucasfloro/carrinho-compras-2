@@ -1,3 +1,10 @@
+/**
+ *
+ * @author 
+ * Nomes: Carlos Damian             TIA: 310.4726-2
+ *        Lucas Flóro e Silva       TIA: 310.8906-2
+ */
+
 package br.calebe.exemplos.ex01;
 
 public class CartaoCredito {
